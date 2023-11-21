@@ -30,59 +30,59 @@ export default {
     name: 'app',
     data() {
         return {
-            api_key: '', // Get your own API key
+            api_key: '252d2dcfff030bddf06d281b1189d3f3', // Get your own API key
             url_base: 'https://api.openweathermap.org/data/2.5/',
             query: '',
             weather: {},
         };
       },
       methods: {
-    fetchWeather(e) {
-      if (e.key === "Enter") {
-        fetch(
-          `${this.url_base}weather?q=${this.query}&units=imperial&appid=${this.api_key}`
-        )
-          .then((res) => {
-            return res.json();
-          }).then(this.setResults);
-      }
-    },
+        fetchWeather(e) {
+          if (e.key === "Enter") {
+            fetch(
+              `${this.url_base}weather?q=${this.query}&units=imperial&appid=${this.api_key}`
+            )
+              .then((res) => {
+                return res.json();
+              }).then(this.setResults);
+          }
+        },
 
-    setResults(results) {
-      this.weather = results;
-    },
-    dateBuilder() {
-      let d = new Date();
-      let months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-      let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
+        setResults(results) {
+          this.weather = results;
+        },
+        dateBuilder() {
+          let d = new Date();
+          let months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ];
+          let days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
 
-      let day = days[d.getDay()];
-      let date = d.getDate();
-      let month = months[d.getMonth()];
-      let year = d.getFullYear();
+          let day = days[d.getDay()];
+          let date = d.getDate();
+          let month = months[d.getMonth()];
+          let year = d.getFullYear();
 
-      return `${day} ${date} ${month} ${year}`;
+          return `${day} ${date} ${month} ${year}`;
     },
   },
 }
